@@ -1,0 +1,706 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="参考," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="强调星号*与下划线_都可以，-单是斜体-，–双是粗体–，符号可跨行，符号可加空格
+分割线_
+三个或更多-_*，必须单独一行，可含空格
+
+
+引用
+
+双层引用
+
+
+&amp;gt; 可以不加空格
+标题
+Atx方式
+
+​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown 语法">
+<meta property="og:url" content="http://yoursite.com/2016/05/13/markdown/index.html">
+<meta property="og:site_name" content="Turtle">
+<meta property="og:description" content="强调星号*与下划线_都可以，-单是斜体-，–双是粗体–，符号可跨行，符号可加空格
+分割线_
+三个或更多-_*，必须单独一行，可含空格
+
+
+引用
+
+双层引用
+
+
+&amp;gt; 可以不加空格
+标题
+Atx方式
+
+​">
+<meta property="og:updated_time" content="2016-05-14T07:42:19.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown 语法">
+<meta name="twitter:description" content="强调星号*与下划线_都可以，-单是斜体-，–双是粗体–，符号可跨行，符号可加空格
+分割线_
+三个或更多-_*，必须单独一行，可含空格
+
+
+引用
+
+双层引用
+
+
+&amp;gt; 可以不加空格
+标题
+Atx方式
+
+​">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Markdown 语法 | Turtle </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Turtle</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Hungry Stay Foolish</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Markdown 语法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-13T16:24:31+08:00" content="2016-05-13">
+              2016-05-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h4><p>星号*与下划线_都可以，-<em>单是斜体</em>-，–<strong>双是粗体</strong>–，符号可跨行，符号可加空格</p>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线_"></a>分割线_</h4><hr>
+<p>三个或更多-_*，必须单独一行，可含空格</p>
+<hr>
+<blockquote>
+<p><strong>引用</strong></p>
+<blockquote>
+<p>双层引用</p>
+</blockquote>
+</blockquote>
+<p>> 可以不加空格</p>
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><ul>
+<li>Atx方式</li>
+</ul>
+<p>​<a id="more"></a>    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">#### 二级标题</span><br><span class="line">##### 三级标题</span><br><span class="line">######## 四级标题</span><br><span class="line">######### 五级标题</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Setset方式</li>
+</ul>
+<p>​    三个或更多<code>大标题===小标题---</code></p>
+<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>-或者+,空格不可省略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 无序列表</span><br><span class="line">- 无序列表</span><br><span class="line">- 无序列表：我很长。我也很长！那比一比啊？比就比！我有这么长，你有我长吗？我有这么这么长！好吧，你赢了！</span><br></pre></td></tr></table></figure>
+<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>数字加点号，空格不可省略，数字可不按顺序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 有序列表</span><br><span class="line">2. 有序列表</span><br><span class="line">3. 有序列表</span><br><span class="line">8. 有序列表</span><br></pre></td></tr></table></figure>
+<h4 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h4><p>-+循环使用 ，符号前后空格不可省略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 嵌套列表</span><br><span class="line"> + 嵌套列表</span><br><span class="line"> + 嵌套列表</span><br><span class="line">  - 嵌套列表</span><br><span class="line">   * 嵌套列表</span><br><span class="line">- 嵌套列表</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list</li>
+<li><ul>
+<li>list</li>
+<li>list</li>
+<li><ul>
+<li>list</li>
+<li><ul>
+<li>list</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="文字链接"><a href="#文字链接" class="headerlink" title="文字链接"></a>文字链接</h4><ul>
+<li>inline方式</li>
+</ul>
+<p>[sisi](<a href="http://sizhihuan.cn" target="_blank" rel="external">http://sizhihuan.cn</a>)</p>
+<p><a href="http://sizhhuan.cn" target="_blank" rel="external">sisi</a></p>
+<ul>
+<li>索引方式</li>
+</ul>
+<blockquote>
+<p>[sisi](1)</p>
+<p>[sizhihuan](2)</p>
+<p>[1]:<a href="http://sizhihuan.cn" target="_blank" rel="external">http://sizhihuan.cn</a></p>
+<p>[2]:  <a href="http://sisi.cn" target="_blank" rel="external">http://sisi.cn</a></p>
+</blockquote>
+<p><a href="1">sisi</a></p>
+<p><a href="2">sizhihuan</a></p>
+<h4 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h4><p>多个感叹号，Tooltips可省略，要设置大小只能借助HTML标记<a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">!]()</a><code>![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &quot;GitHub Mark&quot;)</code></p>
+<h4 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h4><p>尖括号 \&lt; <a href="http://sizhihuan.cn" target="_blank" rel="external">http://sizhihuan.cn</a> ></p>
+<p><a href="http://sizhihuan.cn" target="_blank" rel="external">http://sizhihuan.cn</a></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li><h5 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h5><p><em>用符号 `,在其实和末尾处都要添加</em>(若要显示`,需要输入两次``)</p>
+<p><code>this is a inline code</code></p>
+</li>
+</ul>
+<ul>
+<li><h5 id="段落代码"><a href="#段落代码" class="headerlink" title="段落代码"></a>段落代码</h5></li>
+</ul>
+<p>​    -  <em> 每行文字前加4个空格或者1个Tab，并用空行开始</em></p>
+<p>​    - * 或者 连续三个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` </span><br><span class="line">var sisi = &#123;&#125;</span><br><span class="line">sisi.name = &quot;sizhiheng&quot;;</span><br><span class="line">sisi.age = &quot;25&quot;;</span><br><span class="line">sisi.agender = &quot;female&quot;;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><h5 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h5><p><em>可指定编程语言，『』代表左右大括号</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">『% codeblock [title] [lang:php] [url] [link text]%』</span><br><span class="line">  $word = &apos;hello&apos;</span><br><span class="line">  echo $word;</span><br><span class="line">『% endcodeblock %』</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注释</strong></p>
+<!--zhushi-->
+<ul>
+<li>角标<a href="sizhihuan.cn">^like this</a>  <em>[ \^ likethis]</em></li>
+</ul>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| First Header  | Second Header |</span><br><span class="line">| ------------- | ------------- |</span><br><span class="line">| Content Cell  | Content Cell  |</span><br><span class="line">| Content Cell  | Content Cell  |</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:right">Value</th>
+<th style="text-align:center">Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Computer</td>
+<td style="text-align:right">$1600</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:left">Phone</td>
+<td style="text-align:right">$12</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:left">Pipe</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:center">234</td>
+</tr>
+</tbody>
+</table>
+<h4 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h4><ul>
+<li>[ ] a task list <code>-[]</code><em>中间空格不可省略</em></li>
+<li>[ ] task two</li>
+<li>[ ] task three</li>
+</ul>
+<h4 id="索引TOC"><a href="#索引TOC" class="headerlink" title="索引TOC"></a>索引<em>TOC</em></h4><p><code>[toc]+回车</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/参考/" rel="tag">#参考</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/13/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/14/Amgular-ajax/" rel="prev" title="Amgular-ajax">
+                Amgular-ajax <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Zhs" />
+          <p class="site-author-name" itemprop="name">Zhs</p>
+          <p class="site-description motion-element" itemprop="description">一小步，一大步</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#强调"><span class="nav-number">1.</span> <span class="nav-text">强调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分割线"><span class="nav-number">2.</span> <span class="nav-text">分割线_</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标题"><span class="nav-number">3.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无序列表"><span class="nav-number">4.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有序列表"><span class="nav-number">5.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套列表"><span class="nav-number">6.</span> <span class="nav-text">嵌套列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文字链接"><span class="nav-number">7.</span> <span class="nav-text">文字链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片链接"><span class="nav-number">8.</span> <span class="nav-text">图片链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动链接"><span class="nav-number">9.</span> <span class="nav-text">自动链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">10.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#行内代码"><span class="nav-number">10.1.</span> <span class="nav-text">行内代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段落代码"><span class="nav-number">10.2.</span> <span class="nav-text">段落代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hexo"><span class="nav-number">10.3.</span> <span class="nav-text">hexo</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格"><span class="nav-number">11.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#待办事项"><span class="nav-number">12.</span> <span class="nav-text">待办事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引TOC"><span class="nav-number">13.</span> <span class="nav-text">索引TOC</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhs</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

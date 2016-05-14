@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="笔记, 心情" />
+  <meta name="keywords" content="bug," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="一小步，一大步">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Turtle">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="URL传值时解析乱码1decodeURI(decodeURI(getQueryString(&apos;name&apos;)));
+获取JSON文件内容这里是获取所有对象的nom属性值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS问题记录">
+<meta property="og:url" content="http://yoursite.com/2016/05/14/jsQA/index.html">
 <meta property="og:site_name" content="Turtle">
-<meta property="og:description" content="一小步，一大步">
+<meta property="og:description" content="URL传值时解析乱码1decodeURI(decodeURI(getQueryString(&apos;name&apos;)));
+获取JSON文件内容这里是获取所有对象的nom属性值">
+<meta property="og:updated_time" content="2016-05-14T07:42:12.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Turtle">
-<meta name="twitter:description" content="一小步，一大步">
+<meta name="twitter:title" content="JS问题记录">
+<meta name="twitter:description" content="URL传值时解析乱码1decodeURI(decodeURI(getQueryString(&apos;name&apos;)));
+获取JSON文件内容这里是获取所有对象的nom属性值">
 
 
 
@@ -110,7 +114,7 @@
   };
 </script>
 
-  <title> Turtle </title>
+  <title> JS问题记录 | Turtle </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,9 +135,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,9 +212,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -232,10 +234,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/05/14/jsQA/" itemprop="url">
-                  JS问题记录
-                </a>
+                JS问题记录
               
             
           </h1>
@@ -275,349 +274,67 @@
       
 
       
-        
-          <h3 id="URL传值时解析乱码"><a href="#URL传值时解析乱码" class="headerlink" title="URL传值时解析乱码"></a><strong>URL传值时解析乱码</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">decodeURI</span>(<span class="built_in">decodeURI</span>(getQueryString(<span class="string">'name'</span>)));</span><br></pre></td></tr></table></figure>
-<h3 id="获取JSON文件内容"><a href="#获取JSON文件内容" class="headerlink" title="获取JSON文件内容"></a><strong>获取JSON文件内容</strong></h3><p><em>这里是获取所有对象的nom属性值</em><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/14/jsQA/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/14/Amgular-ajax/" itemprop="url">
-                  Amgular-ajax
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-14T14:27:08+08:00" content="2016-05-14">
-              2016-05-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="解决angular跨域问题"><a href="#解决angular跨域问题" class="headerlink" title="解决angular跨域问题"></a>解决angular跨域问题</h2><ul>
-<li>后台添加可访问的地址来源（*代表全部）<code>response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</code></li>
-<li><p>删除默认的请求头信息，并添加x-www-form-urlencoded的请求头类型(便于服务器端解析)</p>
-<h2 id="angular-和-jQuery-ajax传值的区别"><a href="#angular-和-jQuery-ajax传值的区别" class="headerlink" title="angular 和 jQuery ajax传值的区别"></a>angular 和 jQuery ajax传值的区别</h2></li>
-<li><p>angualr默认以json的格式传递数据{‘a’:1,’b’:3,’n’:’ss’}，而jquery会对数据进行处理类似a=1&amp;m=3&amp;c=9这样。所以后台按照原来的方法会解析不到数据</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/14/Amgular-ajax/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/13/markdown/" itemprop="url">
-                  Markdown 语法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-13T16:24:31+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h4><p>星号*与下划线_都可以，-<em>单是斜体</em>-，–<strong>双是粗体</strong>–，符号可跨行，符号可加空格</p>
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线_"></a>分割线_</h4><hr>
-<p>三个或更多-_*，必须单独一行，可含空格</p>
-<hr>
-<blockquote>
-<p><strong>引用</strong></p>
-<blockquote>
-<p>双层引用</p>
-</blockquote>
-</blockquote>
-<p>> 可以不加空格</p>
-<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><ul>
-<li>Atx方式</li>
+        <h3 id="URL传值时解析乱码"><a href="#URL传值时解析乱码" class="headerlink" title="URL传值时解析乱码"></a><strong>URL传值时解析乱码</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">decodeURI</span>(<span class="built_in">decodeURI</span>(getQueryString(<span class="string">'name'</span>)));</span><br></pre></td></tr></table></figure>
+<h3 id="获取JSON文件内容"><a href="#获取JSON文件内容" class="headerlink" title="获取JSON文件内容"></a><strong>获取JSON文件内容</strong></h3><p><em>这里是获取所有对象的nom属性值</em><br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nom = <span class="string">''</span>;</span><br><span class="line"><span class="comment">//这里有四个文件detail1-4，</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i&lt;=<span class="number">4</span>;i++)&#123;</span><br><span class="line"><span class="comment">//这里用的zepto内置的方法</span></span><br><span class="line">  $.getJSON(<span class="string">'detail'</span>+i+<span class="string">'.html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  	<span class="comment">//遍历json字符串的所有条目</span></span><br><span class="line">    $.each(data,<span class="function"><span class="keyword">function</span>(<span class="params">name,value</span>) </span>&#123;</span><br><span class="line">     nom+=<span class="string">'\"'</span>+value.nom+<span class="string">'\",'</span>;</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ajax传值问题小结"><a href="#ajax传值问题小结" class="headerlink" title="ajax传值问题小结"></a>ajax传值问题小结</h3><ul>
+<li><p><em>传递数组对象时需要先转成字符串，方法：</em><code>JSON.stringify(obj)</code></p>
+</li>
+<li><p><em>字符串转JSON,方法：</em> <code>JSON.parse(string)</code> </p>
+</li>
 </ul>
-<p>​
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/13/markdown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/13/test/" itemprop="url">
-                  test
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-13T16:24:31+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/bug/" rel="tag">#bug</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>###angular 应用骨架<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/13/test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/14/Amgular-ajax/" rel="next" title="Amgular-ajax">
+                <i class="fa fa-chevron-left"></i> Amgular-ajax
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -625,6 +342,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -644,8 +365,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -688,6 +418,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL传值时解析乱码"><span class="nav-number">1.</span> <span class="nav-text">URL传值时解析乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取JSON文件内容"><span class="nav-number">2.</span> <span class="nav-text">获取JSON文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax传值问题小结"><span class="nav-number">3.</span> <span class="nav-text">ajax传值问题小结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -784,6 +525,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
