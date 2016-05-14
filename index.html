@@ -233,6 +233,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/15/angular-study/" itemprop="url">
+                  Angular 学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-15T03:01:39+08:00" content="2016-05-15">
+              2016-05-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/15/angular-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/angular-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="angular应用骨架"><a href="#angular应用骨架" class="headerlink" title="angular应用骨架"></a>angular应用骨架</h2><h3 id="ng-app定义的-位置，决定了angular的处理边界。"><a href="#ng-app定义的-位置，决定了angular的处理边界。" class="headerlink" title="ng-app定义的 位置，决定了angular的处理边界。"></a>ng-app定义的 <strong>位置</strong>，决定了angular的处理边界。</h3><p><em>可以绑定在<code>&lt;html&gt;、&lt;body&gt;</code>或者任意的<code>&lt;div&gt;</code>标签上</em></p>
+<h3 id="MVC-Model-View-Controlle"><a href="#MVC-Model-View-Controlle" class="headerlink" title="MVC Model View Controlle"></a><strong>MVC</strong> <em>Model View Controlle</em></h3><ul>
+<li><ul>
+<li>用来容纳数据的模型，代表当前的状态。</li>
+<li>用来展示数据的视图</li>
+<li>用来管理模型和视图之间关系的控制器</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>正确定义控制器：定义成模型的一部分</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">'myAPP'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">'controllerName'</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--Here goes your HTML code--&gt;</span></span><br><span class="line"> 	 &#123;&#123;userName&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myAppModel = angular.module(<span class="string">'myApp'</span>,[]);</span><br><span class="line">myAppModel.controller(<span class="string">'controllerName'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">  &lt;!--Here goes your code--&gt;</span><br><span class="line">    $scope.userName = <span class="string">"sisi"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/15/angular-study/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/14/jsQA/" itemprop="url">
                   JS问题记录
                 </a>
@@ -255,6 +371,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/14/jsQA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/14/jsQA/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -352,6 +475,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/14/Amgular-ajax/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/14/Amgular-ajax/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -453,6 +583,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/13/markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/13/markdown/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -490,102 +627,6 @@
 <p>​
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/13/markdown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/13/test/" itemprop="url">
-                  test
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-13T16:24:31+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>###angular 应用骨架<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/13/test/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -794,9 +835,28 @@
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"smturtle"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
+    
+  
+
+
 
 
 
