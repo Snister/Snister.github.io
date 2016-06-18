@@ -233,6 +233,126 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/18/python/" itemprop="url">
+                  Python提取网页中内容写入Json并打包成exe文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-18T15:33:19+08:00" content="2016-06-18">
+              2016-06-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/18/python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/python/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><strong>背景介绍：</strong><br>影梭提供三个免费的账号可供使用，但六小时更换一次密码，每次打开网页粘贴密码的过程机器繁琐。遂想到利用python自动完成这一过程。</p>
+</blockquote>
+<h5 id="提取网页中密码"><a href="#提取网页中密码" class="headerlink" title="提取网页中密码"></a>提取网页中密码</h5><p>这里用了很基础的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#直接爬到首页的全部内容</span></span><br><span class="line">request = urllib2.Request(<span class="string">"http://www.ishadowsocks.net/"</span>)</span><br><span class="line">response = urllib2.urlopen(request)</span><br><span class="line"><span class="comment">#定义提取的函数</span></span><br><span class="line"><span class="comment">#匹配模式，待匹配字符串，序号（第几个匹配到的）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extractData</span><span class="params">(regex, content, index)</span>:</span>  </span><br><span class="line">    r = <span class="string">'0'</span>  </span><br><span class="line">    p = re.compile(regex)  </span><br><span class="line">    m = p.search(content)  </span><br><span class="line">    <span class="keyword">if</span> m:  </span><br><span class="line">        r = m.group(index)  </span><br><span class="line">    <span class="keyword">return</span> r   </span><br><span class="line"><span class="comment">#定义匹配模式'()'内为要提取的内容（这里是谷歌来的， `.*`代表全部内容 ）</span></span><br><span class="line"><span class="comment">#[r'A密码:(.*)&lt;/h4&gt;'],将匹配的字符串转换为对象</span></span><br><span class="line">regexA = <span class="string">r'A密码:(.*)&lt;/h4&gt;'</span>  </span><br><span class="line">regexB = <span class="string">r'B密码:(.*)&lt;/h4&gt;'</span> </span><br><span class="line">regexC = <span class="string">r'C密码:(.*)&lt;/h4&gt;'</span> </span><br><span class="line">content = response.read() </span><br><span class="line">index = <span class="number">1</span></span><br><span class="line">keyA=extractData(regexA, content, index)</span><br><span class="line">keyB=extractData(regexB, content, index)</span><br><span class="line">keyC=extractData(regexC, content, index)</span><br></pre></td></tr></table></figure>
+<h5 id="写入配置文件"><a href="#写入配置文件" class="headerlink" title="写入配置文件"></a>写入配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#json格式读取配置文件</span><br><span class="line">f2 = file(&apos;gui-config.json&apos;)</span><br><span class="line">s = json.load(f2)</span><br><span class="line">f2.close()</span><br><span class="line">#更改对应密码</span><br><span class="line">s[&apos;configs&apos;][0][&apos;password&apos;] = keyA</span><br><span class="line">s[&apos;configs&apos;][1][&apos;password&apos;] = keyB</span><br><span class="line">s[&apos;configs&apos;][2][&apos;password&apos;] = keyC</span><br><span class="line">#写入密码</span><br><span class="line">with open(&apos;gui-config.json&apos;, &apos;w&apos;) as f:</span><br><span class="line">    json.dump(s, f)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<h5 id="编译成可执行文件"><a href="#编译成可执行文件" class="headerlink" title="编译成可执行文件"></a>编译成可执行文件</h5><ul>
+<li><p>安装<a href="http://https://pip.pypa.io/en/stable/installing/" target="_blank" rel="external">pip</a>工具</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装<a href="http://pythonhosted.org/PyInstaller/installation.html" target="_blank" rel="external">pyinstaller</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller myscript.py</span><br></pre></td></tr></table></figure>
+<p>| -D, –onedir  | Create a one-folder bundle containing an executable (default) |<br>| ————- | —————————————- |<br>| -F, –onefile | Create a one-file bundled executable.    |<br>| –specpathDIR | Folder to store the generated spec file (default: current directory) |</p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span><br><span class="line">Created on Sat Jun 18 09:07:19 2016</span><br><span class="line"></span><br><span class="line">@author: Zhs</span><br><span class="line">"""</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">request = urllib2.Request(<span class="string">"http://www.ishadowsocks.net/"</span>)</span><br><span class="line">response = urllib2.urlopen(request)</span><br><span class="line"></span><br><span class="line"><span class="comment">#print response.read()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extractData</span><span class="params">(regex, content, index)</span>:</span>  </span><br><span class="line">    r = <span class="string">'0'</span>  </span><br><span class="line">    p = re.compile(regex)  </span><br><span class="line">    m = p.search(content)  </span><br><span class="line">    <span class="keyword">if</span> m:  </span><br><span class="line">        r = m.group(index)  </span><br><span class="line">    <span class="keyword">return</span> r  </span><br><span class="line"><span class="comment">#regex = r'密码:(.*)&lt;/h4&gt;'  </span></span><br><span class="line">regexA = <span class="string">r'A密码:(.*)&lt;/h4&gt;'</span>  </span><br><span class="line">regexB = <span class="string">r'B密码:(.*)&lt;/h4&gt;'</span> </span><br><span class="line">regexC = <span class="string">r'C密码:(.*)&lt;/h4&gt;'</span> </span><br><span class="line">content = response.read() </span><br><span class="line">index = <span class="number">1</span></span><br><span class="line">keyA=extractData(regexA, content, index)</span><br><span class="line">keyB=extractData(regexB, content, index)</span><br><span class="line">keyC=extractData(regexC, content, index)</span><br><span class="line">s =  <span class="string">'US:'</span>+keyA+<span class="string">'\nHK:'</span>+keyB+<span class="string">'\nJP:'</span>+keyC</span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment"># Reading data back</span></span><br><span class="line"><span class="comment">#with open('data.json', 'r') as f2:</span></span><br><span class="line">    <span class="comment">#data = json.load(f2)</span></span><br><span class="line">    <span class="comment">#json.dump(data, f)</span></span><br><span class="line">f2 = file(<span class="string">'gui-config.json'</span>)</span><br><span class="line">s = json.load(f2)</span><br><span class="line">f2.close()</span><br><span class="line">s[<span class="string">'configs'</span>][<span class="number">0</span>][<span class="string">'password'</span>] = keyA</span><br><span class="line">s[<span class="string">'configs'</span>][<span class="number">1</span>][<span class="string">'password'</span>] = keyB</span><br><span class="line">s[<span class="string">'configs'</span>][<span class="number">2</span>][<span class="string">'password'</span>] = keyC</span><br><span class="line"><span class="comment">#json.dumps(s, sort_keys=True, indent=2) </span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'gui-config.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(s, f)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/27/angular-infinite-scroll/" itemprop="url">
                   angular-infinite-scroll
                 </a>
@@ -816,7 +936,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -826,7 +946,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
