@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        JS问题记录｜Zhs&#39;s blog
+        写一个原生JS懒加载插件｜Zhs&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://snister.github.io/2016/05/14/jsQA/">
+    <link rel="canonical" href="http://snister.github.io/2016/10/22/write-Native-Js-Plugin/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,18 +145,21 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>JS问题记录</h1>
+                    <h1>写一个原生JS懒加载插件</h1>
                     
                     <span class="meta">
                          作者 Zhs
                         <span>
-                          日期 2016-05-14
+                          日期 2016-10-22
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#bug"
-                           title="bug">bug</a>
+                        <a class="tag" href="/tags/#javascript"
+                           title="javascript">javascript</a>
+                        
+                        <a class="tag" href="/tags/#插件"
+                           title="插件">插件</a>
                         
                     </div>
                 </div>
@@ -165,7 +168,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            JS问题记录
+            写一个原生JS懒加载插件
         </span>
     </div>
 </header>
@@ -176,25 +179,53 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="URL传值时解析乱码"><a href="#URL传值时解析乱码" class="headerlink" title="URL传值时解析乱码"></a><strong>URL传值时解析乱码</strong></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">decodeURI</span>(<span class="built_in">decodeURI</span>(getQueryString(<span class="string">'name'</span>)));</span><br></pre></td></tr></table></figure>
-<h3 id="获取JSON文件内容"><a href="#获取JSON文件内容" class="headerlink" title="获取JSON文件内容"></a><strong>获取JSON文件内容</strong></h3><p><em>这里是获取所有对象的nom属性值</em><br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nom = <span class="string">''</span>;</span><br><span class="line"><span class="comment">//这里有四个文件detail1-4，</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i&lt;=<span class="number">4</span>;i++)&#123;</span><br><span class="line"><span class="comment">//这里用的zepto内置的方法</span></span><br><span class="line">  $.getJSON(<span class="string">'detail'</span>+i+<span class="string">'.html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  	<span class="comment">//遍历json字符串的所有条目</span></span><br><span class="line">    $.each(data,<span class="function"><span class="keyword">function</span>(<span class="params">name,value</span>) </span>&#123;</span><br><span class="line">     nom+=<span class="string">'\"'</span>+value.nom+<span class="string">'\",'</span>;</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="ajax传值问题小结"><a href="#ajax传值问题小结" class="headerlink" title="ajax传值问题小结"></a>ajax传值问题小结</h3><ul>
-<li><p><em>传递数组对象时需要先转成字符串，方法：</em><code>JSON.stringify(obj)</code></p>
+                <blockquote>
+<p>之前用过许多插件，但是从未深究过他们是如何实现的。最近在读书，刚好想到这个问题，便研究了一下。结合之前做懒加载的经验，试着写一个原生的插件。记录在此。</p>
+</blockquote>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ol>
+<li><p>环境封装</p>
+<p>将所有代码封装在一个立即执行的匿名函数中</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//插件所有功能都写在这个函数下</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><em>字符串转JSON,方法：</em> <code>JSON.parse(string)</code> </p>
-</li>
+</ol>
+<p>​  这样可以模仿块级作用域，确保不会对环境造成污染。</p>
+<ol>
+<li><p>定义插件功能<br>(1)  默认的配置对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var options = &#123;</span><br><span class="line">  offset : 20, //距离屏幕底部一定距离开始加载</span><br><span class="line">  time : 100, //延迟时间</span><br><span class="line">  selector : &apos;.z-lazyload&apos;, //需要懒加载的图片类名</span><br><span class="line">  realUrl : &apos;data-original&apos; //真实地址特性名</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>同时定义了存放待加载图片和延迟标识的全局变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var imgList = [],delay;</span><br></pre></td></tr></table></figure>
+<p> (2) 定义插件的入口函数,主要逻辑的实现。</p>
+<ul>
+<li>配置修改</li>
+<li>获取懒加载图片节点</li>
+<li>绑定滚动事件</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function ImageLazyload(opts) &#123;</span><br><span class="line">if (opts) &#123;</span><br><span class="line">  for(var key in opts) &#123;</span><br><span class="line">    options[key] = opts[key];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">getNode();</span><br><span class="line">_delay();//避免首次加载未触发scroll事件,主动触发一次加载函数</span><br><span class="line">window.addEventListener(&apos;scroll&apos;, _delay, false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(3) 功能函数的编写</p>
+<ul>
+<li>判断图片位置</li>
+<li>显示图片</li>
+<li>延迟函数</li>
+</ul>
+</li>
+<li><p>暴露访问API，把入口函数绑定到windows对象上。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.ImageLazyload = ImageLazyload;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">//默认配置</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">      offset : <span class="number">20</span>,</span><br><span class="line">      time : <span class="number">100</span>,</span><br><span class="line">      selector : <span class="string">'.z-lazyload'</span>,</span><br><span class="line">      realUrl : <span class="string">'data-original'</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">var</span> imgList = [],delay;</span><br><span class="line"><span class="comment">//调用的主函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ImageLazyload</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (opts) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> opts) &#123;</span><br><span class="line">        options[key] = opts[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    getNode();</span><br><span class="line">    _delay();<span class="comment">//避免首次加载未触发scroll事件,主动触发一次加载函数</span></span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, _delay, <span class="literal">false</span>);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_isShow</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> coords = el.getBoundingClientRect();</span><br><span class="line">    <span class="keyword">return</span> ( (coords.top &gt;= <span class="number">0</span>||(coords.top+coords.height) &gt;= <span class="number">0</span>) &amp;&amp; coords.left &gt;= <span class="number">0</span> &amp;&amp; coords.top &lt;=((<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight) + <span class="built_in">parseInt</span>(options.offset)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_loadImage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = imgList.length; i--;) &#123;</span><br><span class="line">      <span class="keyword">var</span> el = imgList[i];</span><br><span class="line">      <span class="keyword">if</span> (_isShow(el)) &#123;</span><br><span class="line">        el.src = el.getAttribute(options.realUrl);</span><br><span class="line">        el.classList.remove(options.selector.substring(<span class="number">1</span>));</span><br><span class="line">        imgList.splice(i, <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_delay</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  	<span class="keyword">if</span>(delay)&#123;</span><br><span class="line">    clearTimeout(delay);</span><br><span class="line">    &#125;</span><br><span class="line">    delay = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      _loadImage();</span><br><span class="line">    &#125;, options.time);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    imgList = [];</span><br><span class="line">    <span class="keyword">var</span> nodes = <span class="built_in">document</span>.querySelectorAll(options.selector);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = nodes.length; i &lt; l; i++) &#123;</span><br><span class="line">      imgList.push(nodes[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    nodes = <span class="literal">null</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">    <span class="comment">//暴露API（把属性添加到windows对象上）</span></span><br><span class="line">  <span class="keyword">this</span>.ImageLazyload = ImageLazyload;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p><a href="https://segmentfault.com/a/1190000004656348" target="_blank" rel="external">参考：实现一个图片懒加载插件有多难</a><br><a href="http://geocld.github.io/2016/03/10/javascript_plugin/" target="_blank" rel="external">延申：原生JavaScript插件编写指南</a></p>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/05/14/jsQA/"
-                     data-title="JS问题记录"
-                     data-url="http://snister.github.io/2016/05/14/jsQA/"
+                     data-thread-key="2016/10/22/write-Native-Js-Plugin/"
+                     data-title="写一个原生JS懒加载插件"
+                     data-url="http://snister.github.io/2016/10/22/write-Native-Js-Plugin/"
                      data-images=""
-                     data-content="URL传值时解析乱码decodeURI(decodeURI(getQueryString('n... | Zhs&#39;s blog ">
+                     data-content="
+之前用过许多插件，但是从未深究过他们是如何实现的。最近在读书，刚好想到这个问题，便研究了一下... | Zhs&#39;s blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -212,15 +243,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2016/05/15/angular-study/" data-toggle="tooltip" data-placement="top"
-                           title="Angular 学习笔记">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2016/05/14/Amgular-ajax/" data-toggle="tooltip" data-placement="top"
-                           title="Angular-ajax">Next Post &rarr;</a>
+                        <a href="/2016/06/18/python/" data-toggle="tooltip" data-placement="top"
+                           title="Python提取网页中内容写入Json并打包成exe文件">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -229,9 +255,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/05/14/jsQA/"
-                         data-title="JS问题记录"
-                         data-url="http://snister.github.io/2016/05/14/jsQA/">
+                         data-thread-key="2016/10/22/write-Native-Js-Plugin/"
+                         data-title="写一个原生JS懒加载插件"
+                         data-url="http://snister.github.io/2016/10/22/write-Native-Js-Plugin/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -243,7 +269,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#URL传值时解析乱码"><span class="toc-text">URL传值时解析乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取JSON文件内容"><span class="toc-text">获取JSON文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ajax传值问题小结"><span class="toc-text">ajax传值问题小结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现过程"><span class="toc-text">实现过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -265,8 +291,11 @@
                     </h5>
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#bug"
-                           title="bug">bug</a>
+                        <a class="tag" href="/tags/#javascript"
+                           title="javascript">javascript</a>
+                        
+                        <a class="tag" href="/tags/#插件"
+                           title="插件">插件</a>
                         
                     </div>
                 </section>
