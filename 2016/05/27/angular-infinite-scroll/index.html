@@ -1,608 +1,445 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="司志恒 Github 上的个人博客">
+    <meta name="keyword" content="zhs sinister">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Zhs" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        angular-infinite-scroll｜Zhs&#39;s blog
+        
+    </title>
 
+    <link rel="canonical" href="http://snister.github.io/2016/05/27/angular-infinite-scroll/">
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="angular," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="Angular的无限滚动实现-ngInfiniteScroll前言​    手头项目打算用angular来实现，在预估项目难度的时候想到这个问题。于是查阅资料，找到这个插件。测试后可以满足需求，遂记录在此。
-步骤
-引入infinitscroll的js文件（依赖jquery）
-123&amp;lt;script type=&apos;text/javascript&apos; src=&apos;path/to/jquery.min.j">
-<meta property="og:type" content="article">
-<meta property="og:title" content="angular-infinite-scroll">
-<meta property="og:url" content="http://yoursite.com/2016/05/27/angular-infinite-scroll/index.html">
-<meta property="og:site_name" content="Turtle">
-<meta property="og:description" content="Angular的无限滚动实现-ngInfiniteScroll前言​    手头项目打算用angular来实现，在预估项目难度的时候想到这个问题。于是查阅资料，找到这个插件。测试后可以满足需求，遂记录在此。
-步骤
-引入infinitscroll的js文件（依赖jquery）
-123&amp;lt;script type=&apos;text/javascript&apos; src=&apos;path/to/jquery.min.j">
-<meta property="og:updated_time" content="2016-05-27T15:05:30.168Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="angular-infinite-scroll">
-<meta name="twitter:description" content="Angular的无限滚动实现-ngInfiniteScroll前言​    手头项目打算用angular来实现，在预估项目难度的时候想到这个问题。于是查阅资料，找到这个插件。测试后可以满足需求，遂记录在此。
-步骤
-引入infinitscroll的js文件（依赖jquery）
-123&amp;lt;script type=&apos;text/javascript&apos; src=&apos;path/to/jquery.min.j">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> angular-infinite-scroll | Turtle </title>
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<style>
 
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Turtle</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">Stay Hungry Stay Foolish</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                angular-infinite-scroll
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-27T22:59:55+08:00" content="2016-05-27">
-              2016-05-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/27/angular-infinite-scroll/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/27/angular-infinite-scroll/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+    header.intro-header {
+        background-image: url('http://offjdbu9j.bkt.clouddn.com/image/jpg/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Zhs
+                </span>
+                's Blog
+            </a>
         </div>
-      </header>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://offjdbu9j.bkt.clouddn.com/image/png/trianglify.png">
+
+
+<style>
     
+    header.intro-header {
+        background-image: url('http://offjdbu9j.bkt.clouddn.com/image/png/trianglify.png')
+    }
 
+    
+</style>
 
-    <div class="post-body" itemprop="articleBody">
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>angular-infinite-scroll</h1>
+                    
+                    <span class="meta">
+                         作者 Zhs
+                        <span>
+                          日期 2016-05-27
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#angular"
+                           title="angular">angular</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            angular-infinite-scroll
+        </span>
+    </div>
+</header>
 
-      
-      
-
-      
-        <h2 id="Angular的无限滚动实现-ngInfiniteScroll"><a href="#Angular的无限滚动实现-ngInfiniteScroll" class="headerlink" title="Angular的无限滚动实现-ngInfiniteScroll"></a>Angular的无限滚动实现-ngInfiniteScroll</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​    手头项目打算用angular来实现，在预估项目难度的时候想到这个问题。于是查阅资料，找到这个插件。测试后可以满足需求，遂记录在此。</p>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="Angular的无限滚动实现-ngInfiniteScroll"><a href="#Angular的无限滚动实现-ngInfiniteScroll" class="headerlink" title="Angular的无限滚动实现-ngInfiniteScroll"></a>Angular的无限滚动实现-ngInfiniteScroll</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>​    手头项目打算用angular来实现，在预估项目难度的时候想到这个问题。于是查阅资料，找到这个插件。测试后可以满足需求，遂记录在此。</p>
 <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
 <li><p>引入infinitscroll的js文件（依赖jquery）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/jquery.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/angular.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/ng-infinite-scroll.min.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/jquery.min.js'</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/angular.min.js'</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">'text/javascript'</span> src=<span class="string">'path/to/ng-infinite-scroll.min.js'</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在模块上添加依赖</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApplication'</span>, [<span class="string">'infinite-scroll'</span>,<span class="string">'other...'</span>]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">'myApplication'</span>, [<span class="string">'infinite-scroll'</span>,<span class="string">'other...'</span>]);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在需要无限滚动的html容器上添加<code>infinite-scroll</code>属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div infinite-scroll=<span class="string">"myPagingFunction()"</span> infinite-scroll-distance=<span class="string">"3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div infinite-scroll=<span class="string">"myPagingFunction()"</span> infinite-scroll-distance=<span class="string">"3"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>控制器中定义<code>myPagingFunction()</code> 函数，进行相应操作。</p>
-<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">'myApp'</span> <span class="attr">ng-controller</span>=<span class="string">'DemoController'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">infinite-scroll</span>=<span class="string">'reddit.nextPage()'</span> <span class="attr">infinite-scroll-disabled</span>=<span class="string">'reddit.busy'</span> <span class="attr">infinite-scroll-distance</span>=<span class="string">'1'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">'item in reddit.items'</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">'score'</span>&gt;</span>&#123;&#123;item.score&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">'title'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">'&#123;&#123;item.url&#125;&#125;'</span> <span class="attr">target</span>=<span class="string">'_blank'</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">small</span>&gt;</span>by &#123;&#123;item.author&#125;&#125; -</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">'http://reddit.com&#123;&#123;item.permalink&#125;&#125;'</span> <span class="attr">target</span>=<span class="string">'_blank'</span>&gt;</span>&#123;&#123;item.num_comments&#125;&#125; comments<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">'clear: both;'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-show</span>=<span class="string">'reddit.busy'</span>&gt;</span>Loading data...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">'myApp'</span> <span class="attr">ng-controller</span>=<span class="string">'DemoController'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">infinite-scroll</span>=<span class="string">'reddit.nextPage()'</span> <span class="attr">infinite-scroll-disabled</span>=<span class="string">'reddit.busy'</span> <span class="attr">infinite-scroll-distance</span>=<span class="string">'1'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">'item in reddit.items'</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">'score'</span>&gt;</span>&#123;&#123;item.score&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">'title'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">'&#123;&#123;item.url&#125;&#125;'</span> <span class="attr">target</span>=<span class="string">'_blank'</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">small</span>&gt;</span>by &#123;&#123;item.author&#125;&#125; -</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">'http://reddit.com&#123;&#123;item.permalink&#125;&#125;'</span> <span class="attr">target</span>=<span class="string">'_blank'</span>&gt;</span>&#123;&#123;item.num_comments&#125;&#125; comments<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">'clear: both;'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-show</span>=<span class="string">'reddit.busy'</span>&gt;</span>Loading data...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myApp = angular.module(<span class="string">'myApp'</span>, [<span class="string">'infinite-scroll'</span>]);</span><br><span class="line"></span><br><span class="line">myApp.controller(<span class="string">'DemoController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, Reddit</span>) </span>&#123;</span><br><span class="line">  $scope.reddit = <span class="keyword">new</span> Reddit();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reddit constructor function to encapsulate HTTP and pagination logic</span></span><br><span class="line">myApp.factory(<span class="string">'Reddit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$http</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Reddit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = [];</span><br><span class="line">    <span class="keyword">this</span>.busy = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.after = <span class="string">''</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">Reddit.prototype.nextPage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.busy) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">this</span>.busy = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">"https://api.reddit.com/hot?after="</span> + <span class="keyword">this</span>.after + <span class="string">"&amp;jsonp=JSON_CALLBACK"</span>;</span><br><span class="line">    $http.jsonp(url).success(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> items = data.data.children;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>.items.push(items[i].data);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.after = <span class="string">"t3_"</span> + <span class="keyword">this</span>.items[<span class="keyword">this</span>.items.length - <span class="number">1</span>].id;</span><br><span class="line">      <span class="keyword">this</span>.busy = <span class="literal">false</span>;</span><br><span class="line">    &#125;.bind(<span class="keyword">this</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> Reddit;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myApp = angular.module(<span class="string">'myApp'</span>, [<span class="string">'infinite-scroll'</span>]);</span><br><span class="line"></span><br><span class="line">myApp.controller(<span class="string">'DemoController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, Reddit</span>) </span>&#123;</span><br><span class="line">  $scope.reddit = <span class="keyword">new</span> Reddit();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reddit constructor function to encapsulate HTTP and pagination logic</span></span><br><span class="line">myApp.factory(<span class="string">'Reddit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$http</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Reddit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = [];</span><br><span class="line">    <span class="keyword">this</span>.busy = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.after = <span class="string">''</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">Reddit.prototype.nextPage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.busy) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">this</span>.busy = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">"https://api.reddit.com/hot?after="</span> + <span class="keyword">this</span>.after + <span class="string">"&amp;jsonp=JSON_CALLBACK"</span>;</span><br><span class="line">    $http.jsonp(url).success(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> items = data.data.children;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>.items.push(items[i].data);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.after = <span class="string">"t3_"</span> + <span class="keyword">this</span>.items[<span class="keyword">this</span>.items.length - <span class="number">1</span>].id;</span><br><span class="line">      <span class="keyword">this</span>.busy = <span class="literal">false</span>;</span><br><span class="line">    &#125;.bind(<span class="keyword">this</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> Reddit;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>以上来源于<a href="http://sroze.github.io/ngInfiniteScroll/index.html" target="_blank" rel="external">ngInfiniteScroll</a></p>
 </blockquote>
 
-      
-    </div>
+                <hr>
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                     style="text-align: right"
+                     data-thread-key="2016/05/27/angular-infinite-scroll/"
+                     data-title="angular-infinite-scroll"
+                     data-url="http://snister.github.io/2016/05/27/angular-infinite-scroll/"
+                     data-images=""
+                     data-content="Angular的无限滚动实现-ngInfiniteScroll前言​    手头项目打算用an... | Zhs&#39;s blog ">
+                    <div class="ds-share-inline">
+                        <ul class="ds-share-icons-16">
+                            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                            <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                            <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                            <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                        </ul>
+                        <div class="ds-share-icons-more">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
 
-    <div>
-      
-        
-      
-    </div>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/18/python/" data-toggle="tooltip" data-placement="top"
+                           title="Python提取网页中内容写入Json并打包成exe文件">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/05/15/angular-study/" data-toggle="tooltip" data-placement="top"
+                           title="Angular 学习笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
 
-    <div>
-      
-        
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/05/27/angular-infinite-scroll/"
+                         data-title="angular-infinite-scroll"
+                         data-url="http://snister.github.io/2016/05/27/angular-infinite-scroll/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
 
-      
-    </div>
+                
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/angular/" rel="tag">#angular</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/15/angular-study/" rel="next" title="Angular 学习笔记">
-                <i class="fa fa-chevron-left"></i> Angular 学习笔记
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/18/python/" rel="prev" title="Python提取网页中内容写入Json并打包成exe文件">
-                Python提取网页中内容写入Json并打包成exe文件 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/05/27/angular-infinite-scroll/"
-           data-title="angular-infinite-scroll" data-url="http://yoursite.com/2016/05/27/angular-infinite-scroll/">
-      </div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Zhs" />
-          <p class="site-author-name" itemprop="name">Zhs</p>
-          <p class="site-description motion-element" itemprop="description">积步千里</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
             </div>
-          
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular的无限滚动实现-ngInfiniteScroll"><span class="toc-text">Angular的无限滚动实现-ngInfiniteScroll</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
         </div>
 
-        
-        
+        <div class="row">
+            <!-- Sidebar Container -->
 
-        
-        
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      </section>
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#angular"
+                           title="angular">angular</a>
+                        
+                    </div>
+                </section>
+                
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Angular的无限滚动实现-ngInfiniteScroll"><span class="nav-number">1.</span> <span class="nav-text">Angular的无限滚动实现-ngInfiniteScroll</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.0.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-number">1.0.2.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">1.0.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
 
     </div>
-  </aside>
+</article>
 
 
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Zhs</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    // dynamic User by Hux
+    var _user = 'smturtle';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Zhs">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Zhs">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Zhs">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Zhs 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
 </script>
 
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://snister.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
 
 
 
+<!-- Baidu Tongji -->
 
 
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
+  _st('install','null','2.0.0');
+</script>
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"smturtle"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://offjdbu9j.bkt.clouddn.com/image/jpg/dogH.jpg">
 </body>
+
 </html>
